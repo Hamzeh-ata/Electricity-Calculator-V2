@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Elec Calculator2</title>
+    <link rel="stylesheet" href="./ElecV2.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="scrollToTop" onclick="topFunction()">
+      <img src="./imgs/scrolltop.png" />
+    </div>
+    <div class="Wrap-section">
+      <div class="wrap-background" id="wrap-background"></div>
+      <section class="main-section">
+        <div class="container c1">
+          <div class="row">
+            <div class="col-12">
+              <div class="title-text text-center">
+                <h1>احسب قيمة فاتورة الكهرباء</h1>
+                <p>
+                  احصل على جميع المعلومات المتعلفة بفاتورة الكهرباء الخاصة بك
+                </p>
+              </div>
+              <div class="main-buttons">
+                <a class="old-button" href="#old-way-section">بطريقة القديمة</a>
+                <a class="New-button" href="#new-way-section">بطريقة الجديدة</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section class="slides-section">
+      <div class="container">
+        <div class="row sllides-row1">
+          <div class="section2-title">
+            <h1>التعرفة المدعومة</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="slides-wrap">
+            <div class="slide">
+              <div class="slide-number">
+                <h1>الشريحة الثالثة</h1>
+              </div>
+              <div class="slide-title">
+                <h1>: كمية الاستهلاك</h1>
+                <h2>اكثر من 600</h2>
+                <h3>كيلو واط ساعة</h3>
+              </div>
+              <span class="bar"></span>
+              <div class="slide-info">
+                <h1>: تكلفة الشريحة</h1>
+                <h2><span>200</span> فلس</h2>
+                <h3>للكيلو واط ساعة</h3>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="slide-number">
+                <h1>الشريحة الثانية</h1>
+              </div>
+              <div class="slide-title">
+                <h1>: كمية الاستهلاك</h1>
+                <h2>600-301</h2>
+                <h3>كيلو واط ساعة</h3>
+              </div>
+              <span class="bar"></span>
+              <div class="slide-info">
+                <h1>: تكلفة الشريحة</h1>
+                <h2>فلس <span>100</span></h2>
+                <h3>للكيلو واط ساعة</h3>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="slide-number">
+                <h1>الشريحة الاولى</h1>
+              </div>
+              <div class="slide-title">
+                <h1>: كمية الاستهلاك</h1>
+                <h2>300-001</h2>
+                <h3>كيلو واط ساعة</h3>
+              </div>
+              <span class="bar"></span>
+              <div class="slide-info">
+                <h1>: تكلفة الشريحة</h1>
+                <h2><span>50</span> فلس</h2>
+                <h3>للكيلو واط ساعة</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="old-way-section" id="old-way-section">
+      <div class="Old-way-title">
+        <h1>احسب فاتورتك بالنظام القديم</h1>
+      </div>
+      <div class="old-wrap">
+        <div class="old-calculator">
+          <div class="input-wrap">
+            <div class="input-cal">
+              <div class="Lightlogo">
+                <img src="./imgs/lightLogo.png" />
+              </div>
+              <div class="Previous">
+                <label class="input-label">
+                  <h4>القراءة السابقة</h4>
+                  <input id="prev-read" />
+                </label>
+              </div>
+              <div class="Now-reading">
+                <label class="input-label">
+                  <h4>القراءة الحالية</h4>
+                  <input id="now-read" />
+                </label>
+              </div>
+              <div class="Service-days">
+                <label class="input-label">
+                  <h4>ايام الخدمة</h4>
+                  <input id="Service-days" />
+                </label>
+              </div>
+              <div class="Sector">
+                <label class="input-label">
+                  <h4>القطاع</h4>
+                  <select class="sector-option" id="select">
+                    <option value="0"></option>
+                    <option value="1">منزلي</option>
+                  </select>
+                </label>
+              </div>
+              <div class="Service">
+                <label class="input-label">
+                  <h4>عداد خدمات؟</h4>
+                  نعم
+                  <input type="radio" id="Service" name="Service" value="1" />
+                  لا
+                  <input
+                    type="radio"
+                    id="notService"
+                    name="Service"
+                    value="2"
+                  />
+                </label>
+              </div>
+              <div class="submit">
+                <button id="submit-button">ارسل</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-result-old" id="old-result">
+          <div class="info">
+            <div class="info-label">
+              <label class="label2">
+                <h4>قيمة الفاتورة</h4>
+                <input readonly="" id="finallBill" />
+              </label>
+            </div>
+            <div class="info-label">
+              <label class="label2">
+                <h4>الكمية المستهلكة</h4>
+                <input readonly="" id="Consumed" />
+              </label>
+            </div>
+            <div class="info-label">
+              <label class="label2">
+                <h4>الكمية المستهلكة باليوم</h4>
+                <input readonly="" id="wattsDay" />
+              </label>
+            </div>
+            <div class="info-label">
+              <label class="label2">
+                <h4>قيمة الاستهلاك</h4>
+                <input id="Consumption-value" readonly="" />
+              </label>
+            </div>
+            <div class="info-label">
+              <label class="label2">
+                <h4>رسم النفايات</h4>
+                <input id="waste-value" readonly="" />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="moreSupport-section">
+      <div class="moreSupport">
+        <div class="title"><h1>الدعم الاضافي</h1></div>
+        <div class="moreSupport-deatils">
+          <div class="moreSupport-deatils1">
+            <div class="slide-title">
+              <h1>: كمية الاستهلاك</h1>
+              <h2>51-200</h2>
+              <h3>كيلو واط ساعة</h3>
+            </div>
+            <div class="slide-info">
+              <h1>: الدعم الاضافي</h1>
+              <h2><span>2.5</span> د.أ</h2>
+              <h3>عالفاتورة</h3>
+            </div>
+          </div>
+          <span class="bar"></span>
+          <div class="moreSupport-deatils2">
+            <div class="slide-title">
+              <h1>: كمية الاستهلاك</h1>
+              <h2>51-200</h2>
+              <h3>كيلو واط ساعة</h3>
+            </div>
+            <div class="slide-info">
+              <h1>: الدعم الاضافي</h1>
+              <h2>د.أ <span>2.5</span></h2>
+              <h3>عالفاتورة</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="new-way-section" id="new-way-section">
+      <div class="New-way-title">
+        <h1>احسب فاتورتك بالنظام الجديد</h1>
+      </div>
+      <div class="new-wrap">
+        <div class="new-calculator">
+          <div class="input-wrap">
+            <div class="input-cal">
+              <div class="Lightlogo">
+                <img src="./imgs/lightLogo.png" />
+              </div>
+              <div class="Previous">
+                <label class="input-label">
+                  <h4>القراءة السابقة</h4>
+                  <input id="prev-read-new" />
+                </label>
+              </div>
+              <div class="Now-reading">
+                <label class="input-label">
+                  <h4>القراءة الحالية</h4>
+                  <input id="now-read-new" />
+                </label>
+              </div>
+              <div class="Service-days">
+                <label class="input-label">
+                  <h4>ايام الخدمة</h4>
+                  <input id="Service-days-new" />
+                </label>
+              </div>
+              <div class="Sector">
+                <label class="input-label">
+                  <h4>القطاع</h4>
+                  <select class="sector-option" id="select-new">
+                    <option value="0"></option>
+                    <option value="1">منزلي</option>
+                  </select>
+                </label>
+              </div>
+              <div class="Service">
+                <label class="input-label">
+                  <h4>عداد خدمات؟</h4>
+                  نعم
+                  <input type="radio" id="Service-new" name="Service" value="1" />
+                  لا
+                  <input
+                    type="radio"
+                    id="notService-new"
+                    name="Service"
+                    value="2"
+                  />
+                </label>
+              </div>
+              <div class="Support">
+                <label class="input-label">
+                  <h4>عداد مدعوم</h4>
+                  نعم
+                  <input type="radio" id="Supported-new" name="Service" value="1" />
+                  لا
+                  <input
+                    type="radio"
+                    id="notSupported-new"
+                    name="Service"
+                    value="2"
+                  />
+                </label>
+              </div>
+              <div class="submit">
+                <button id="submit-button">ارسل</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-result-new">
+          <div class="info">
+            <div class="info-label">
+              <label class="label2">
+                <h4>قيمة الفاتورة</h4>
+                <input readonly="" id="finallBill-new" />
+              </label>
+            </div>
+            <div class="info-label">
+              <label class="label2">
+                <h4>الكمية المستهلكة</h4>
+                <input readonly="" id="Consumed-new" />
+              </label>
+            </div>
+            <div class="info-label">
+              <label class="label2">
+                <h4>الكمية المستهلكة باليوم</h4>
+                <input readonly="" id="wattsDay-new" />
+              </label>
+            </div>
+            <div class="info-label">
+              <label class="label2">
+                <h4>قيمة الاستهلاك</h4>
+                <input id="Consumption-value-new" readonly="" />
+              </label>
+            </div>
+            <div class="info-label">
+              <label class="label2">
+                <h4>رسم النفايات</h4>
+                <input id="Consumption-value-new" readonly="" />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="non-support-slides-section">
+      <div class="container">
+        <div class="row sllides-row1">
+          <div class="section2-title">
+            <h1>التعرفة الغير المدعومة</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="slides-wrap">
+            <div class="slide">
+              <div class="slide-number">
+                <h1>الشريحة الثانية</h1>
+              </div>
+              <div class="slide-title">
+                <h1>: كمية الاستهلاك</h1>
+                <h2>اكثر من 1000</h2>
+                <h3>كيلو واط ساعة</h3>
+              </div>
+              <span class="bar"></span>
+              <div class="slide-info">
+                <h1>: تكلفة الشريحة</h1>
+                <h2><span>150</span> فلس</h2>
+                <h3>للكيلو واط ساعة</h3>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="slide-number">
+                <h1>الشريحة الاولى</h1>
+              </div>
+              <div class="slide-title">
+                <h1>: كمية الاستهلاك</h1>
+                <h2>001-1000</h2>
+                <h3>كيلو واط ساعة</h3>
+              </div>
+              <span class="bar"></span>
+              <div class="slide-info">
+                <h1>: تكلفة الشريحة</h1>
+                <h2>فلس <span>120</span></h2>
+                <h3>للكيلو واط ساعة</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-wrap">
+        <div class="logo-img">
+          <img src="./imgs/fatih-logo.png" />
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="./calcpage.js"></script>
+</html>
