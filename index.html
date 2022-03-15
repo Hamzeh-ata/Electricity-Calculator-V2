@@ -17,7 +17,6 @@
       <img src="./imgs/scrolltop.png" />
     </div>
     <div class="Wrap-section">
-      <div class="wrap-background" id="wrap-background"></div>
       <section class="main-section">
         <div class="container c1">
           <div class="row">
@@ -266,12 +265,12 @@
                 <label class="input-label">
                   <h4>عداد خدمات؟</h4>
                   نعم
-                  <input type="radio" id="Service-new" name="Service" value="1" />
+                  <input type="radio" id="Service-new" name="Service-new" value="1" />
                   لا
                   <input
                     type="radio"
                     id="notService-new"
-                    name="Service"
+                    name="Service-new"
                     value="2"
                   />
                 </label>
@@ -280,23 +279,23 @@
                 <label class="input-label">
                   <h4>عداد مدعوم</h4>
                   نعم
-                  <input type="radio" id="Supported-new" name="Service" value="1" />
+                  <input type="radio" id="Supported-new" name="support" value="2" />
                   لا
                   <input
                     type="radio"
                     id="notSupported-new"
-                    name="Service"
-                    value="2"
+                    name="support"
+                    value="1"
                   />
                 </label>
               </div>
               <div class="submit">
-                <button id="submit-button">ارسل</button>
+                <button id="submit-button-new">ارسل</button>
               </div>
             </div>
           </div>
         </div>
-        <div class="input-result-new">
+        <div class="input-result-new" id="input-result-new">
           <div class="info">
             <div class="info-label">
               <label class="label2">
@@ -325,7 +324,7 @@
             <div class="info-label">
               <label class="label2">
                 <h4>رسم النفايات</h4>
-                <input id="Consumption-value-new" readonly="" />
+                <input id="Waste-value-new" readonly="" />
               </label>
             </div>
           </div>
