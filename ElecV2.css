@@ -395,6 +395,20 @@ input:focus,input[type="radio"]:focus{
   background-size: cover;
   width: 100%;
 }
-.slides-section{
- 
+.warnnings{
+  display: none;
+
+}
+#warningsOld{
+  display: none;
+
+}
+#prevWarning,#nowReadWarning,#supportWarning,#serviceWarning,#prevWarningOld,#nowReadWarningOld,#supportWarningOld,#serviceWarningOld{
+  color: red;
+  display: flex;
+  justify-content: center; 
+}
+#prevWarning h2,#nowReadWarning h2 ,#supportWarning h2, #serviceWarning h2 ,#prevWarningOld h2,#nowReadWarningOld h2 ,#supportWarningOld h2, #serviceWarningOld h2{
+  font-size: 12px !important;
+
 }

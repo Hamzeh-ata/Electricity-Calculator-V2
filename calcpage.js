@@ -28,11 +28,13 @@ var prevRead,
   consumedWattsNew,
   finalBillNew,
   serviceDayCalcN;
-  
 counterFee = 200;
 TVFee = 1000;
 zeros = 1;
-$("#submit-button").click(function () {
+ConsumptionValueNew=0;
+finalBill=0;
+ConsumptionValue=0;
+$("#submit-button").click(function(){
   //CreateElements();
   getInputValues();
   //CreateElements();
@@ -50,10 +52,11 @@ $("#submit-button").click(function () {
     wasteFee = 0;
   }
   finalBill = fixedPrices + wasteFee + ConsumptionValue;
+  WarningsOld();
   ValueSetOld();
-});
 
-$("#submit-button-new").click(function () {
+});
+$("#submit-button-new").click(function(){
   getInputValuesNew();
   $("#input-result-new").show();
   consumedWattsNew = nowReadNew - prevReadNew;
@@ -69,16 +72,14 @@ $("#submit-button-new").click(function () {
   if (serviceNew == 2) {
     wasteFee = 0;
   }
-
+ 
   finalBillNew = fixedPrices + wasteFee + ConsumptionValueNew;
-  
 
   console.log(fixedPrices);
- 
 
+  Warnings();
   ValueSetNew();
 });
-
 function countrySideCalc(Watts) {
   var leng = Watts.toString().length;
   if (Watts <= 999) {
@@ -89,7 +90,6 @@ function countrySideCalc(Watts) {
     //console.log(zerostemp1);
     //reefValue=Watts/zerostemp1;
     reefValue = Watts;
-  
   } else if (Watts >= 1000) {
     var toText = Watts.toString();
     var lastChar = toText.slice(-1);
@@ -102,7 +102,6 @@ function countrySideCalc(Watts) {
     }*/
     //  reefValue=Watts/1000;
     reefValue = Watts;
-   
   }
   zeros = 1;
   return reefValue;
@@ -114,7 +113,6 @@ function wasteFeeCalc(Watts) {
   } else {
     wasteFee = 1666;
   }
-
 }
 function ConsumptionCalc(Watts) {
   if (Watts <= 160) {
@@ -191,24 +189,23 @@ function getInputValuesNew() {
   prevReadNew = $("#prev-read-new").val();
   nowReadNew = $("#now-read-new").val();
   serviceNew = $("input[name=Service-new]:checked").val();
-  ServiceDaysNew=$("#Service-days-new").val();
+  ServiceDaysNew = $("#Service-days-new").val();
 }
-
 function ValuesCalc() {}
 function ValueSetOld() {
   $("#wattsDay").val(serviceDayCalc.toFixed(2));
-  $("#Consumed").val(consumedWatts);
+ $("#Consumed").val(consumedWatts);
   $("#waste-value").val(wasteFee / 1000);
   $("#finallBill").val(finalBill / 1000);
   $("#Consumption-value").val(ConsumptionValue / 1000);
 }
 function ValueSetNew() {
+
   $("#Consumption-value-new").val(ConsumptionValueNew / 1000);
   $("#Consumed-new").val(consumedWattsNew);
   $("#Waste-value-new").val(wasteFee / 1000);
-  $("#finallBill-new").val(finalBillNew/ 1000);
+  $("#finallBill-new").val(finalBillNew / 1000);
   $("#wattsDay-new").val(serviceDayCalcN.toFixed(2));
-
 }
 function supoortedWattsCalc(Watts) {
   if (supported_unsupported == 1) {
@@ -219,188 +216,88 @@ function supoortedWattsCalc(Watts) {
     } else if (Watts > 600) {
       ConsumptionValueNew = 300 * 50 + 300 * 100 + (Watts - 600) * 200;
     }
-    if(Watts>=51 && Watts<=200){
-        ConsumptionValueNew=(ConsumptionValueNew-2500);
+    if (Watts >= 51 && Watts <= 200) {
+      ConsumptionValueNew = ConsumptionValueNew - 2500;
     }
-    if(Watts>=201 && Watts<601){
-        ConsumptionValueNew=(ConsumptionValueNew-2000);
+    if (Watts >= 201 && Watts < 601) {
+      ConsumptionValueNew = ConsumptionValueNew - 2000;
+    }
+    
+  } else if (supported_unsupported == 2) {
+    if (Watts >= 001 && Watts <= 1000) {
+      ConsumptionValueNew = Watts * 120;
+    } else if (Watts >= 1001) {
+      ConsumptionValueNew = 1000 * 120 + (Watts - 1000) * 150;
     }
   }
-  else if(supported_unsupported == 2){
-      if(Watts>=001 && Watts<=1000){
-        ConsumptionValueNew = Watts * 120;
-      }
-      else if(Watts >= 1001){
-        ConsumptionValueNew=1000*120+(Watts-1000) * 150;
-      }
+}
+function Warnings() {
+  if (prevReadNew.length == 0) {
+    //     $("#input-cal").append("<div id='prevWarning'><h2>يرجى ادخال قراءة سابقة *</h2></div>");
+    $("#prevWarning").show();
+    $("#warnnings").show();
+  } 
+  else {
+
+    $("#prevWarning").hide();
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  if (nowReadNew.length == 0) {
+    //   $("#input-cal").append("<div id='nowReadWarning'><h2>يرجى ادخال قراءة حالية</h2></div>");
+    $("#nowReadWarning").show();
+    $("#warnnings").show();
+    console.log(nowReadNew.length + " nowReadNew.length");
+  } 
+  else {
+    $("#nowReadWarning").hide();
+    console.log(nowReadNew.length + " nowReadNew.length");
+  }
+  if (supported_unsupported != 1 && supported_unsupported != 2) {
+    // $("#input-cal").append("<div id='supportWarning'><h2>يرجى تحديد دعم العداد</h2></div>");
+    $("#supportWarning").show();
+    $("#warnnings").show();
+    console.log(supported_unsupported + " supported_unsupported");
+  }
+   else {
+    $("#supportWarning").hide();
+  }
+  if (serviceNew != 1 && serviceNew != 2) {
+    //  $("#input-cal").append("<div id='serviceWarning><h2>يرجى تحديد نوع العداد</h2></div>");
+    $("#serviceWarning").show();
+    $("#warnnings").show();
+    console.log(serviceNew + " serviceNew");
+  } 
+  else {
+    $("#serviceWarning").hide();
+  }
   
+}
+function WarningsOld() {
+  if (prevRead.length == 0) {
+    //     $("#input-cal").append("<div id='prevWarning'><h2>يرجى ادخال قراءة سابقة *</h2></div>");
+    $("#prevWarningOld").show();
+    $("#warningsOld").show();
+  }
+   else {
+    $("#prevWarningOld").hide();
+  }
+  if (nowRead.length == 0) {
+    //   $("#input-cal").append("<div id='nowReadWarning'><h2>يرجى ادخال قراءة حالية</h2></div>");
+    $("#nowReadWarningOld").show();
+    $("#warningsOld").show();
+    console.log(nowRead.length + " nowReadNew.length");
+  } 
+  else {
+    $("#nowReadWarningOld").hide();
+    console.log(nowRead.length + " nowReadNew.length");
+  }
+ 
+  if (service != 1 && service != 2) {
+    //  $("#input-cal").append("<div id='serviceWarning><h2>يرجى تحديد نوع العداد</h2></div>");
+    $("#serviceWarningOld").show();
+    $("#warningsOld").show();
+    console.log(service + " serviceNew");
+  } 
+  else {
+    $("#serviceWarningOld").hide();
+  }
 }
