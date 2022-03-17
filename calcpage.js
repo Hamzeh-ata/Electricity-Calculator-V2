@@ -75,7 +75,7 @@ $("#submit-button-new").click(function(){
  
   finalBillNew = fixedPrices + wasteFee + ConsumptionValueNew;
 
-  console.log(fixedPrices);
+ // console.log(fixedPrices);
 
   Warnings();
   ValueSetNew();
@@ -90,7 +90,8 @@ function countrySideCalc(Watts) {
     //console.log(zerostemp1);
     //reefValue=Watts/zerostemp1;
     reefValue = Watts;
-  } else if (Watts >= 1000) {
+  }
+   else if (Watts >= 1000) {
     var toText = Watts.toString();
     var lastChar = toText.slice(-1);
     var lastDight = +lastChar;
@@ -117,21 +118,26 @@ function wasteFeeCalc(Watts) {
 function ConsumptionCalc(Watts) {
   if (Watts <= 160) {
     ConsumptionValue = Watts * 33;
-    console.log(ConsumptionValue);
-  } else if (Watts >= 161 && Watts <= 300) {
+   // console.log(ConsumptionValue);
+  } 
+  else if (Watts >= 161 && Watts <= 300) {
     ConsumptionValue = 160 * 33 + (Watts - 160) * 72;
-    console.log("Watts" + ConsumptionValue);
-  } else if (Watts >= 301 && Watts <= 500) {
+ //   console.log("Watts" + ConsumptionValue);
+  } 
+  else if (Watts >= 301 && Watts <= 500) {
     ConsumptionValue = 160 * 33 + 140 * 72 + (Watts - 300) * 86;
-    console.log("Watts" + ConsumptionValue);
-  } else if (Watts >= 501 && Watts <= 600) {
+  //  console.log("Watts" + ConsumptionValue);
+  } 
+  else if (Watts >= 501 && Watts <= 600) {
     ConsumptionValue = 160 * 33 + 140 * 72 + 200 * 86 + (Watts - 500) * 114;
-    console.log("Watts" + ConsumptionValue);
-  } else if (Watts >= 601 && Watts <= 750) {
+  //  console.log("Watts" + ConsumptionValue);
+  } 
+  else if (Watts >= 601 && Watts <= 750) {
     ConsumptionValue =
       160 * 33 + 140 * 72 + 200 * 86 + 100 * 114 + (Watts - 600) * 158;
-    console.log("Watts" + ConsumptionValue);
-  } else if (Watts >= 750 && Watts <= 1000) {
+  //  console.log("Watts" + ConsumptionValue);
+  }
+   else if (Watts >= 750 && Watts <= 1000) {
     ConsumptionValue =
       160 * 33 +
       140 * 72 +
@@ -139,8 +145,9 @@ function ConsumptionCalc(Watts) {
       100 * 114 +
       150 * 158 +
       (Watts - 750) * 188;
-    console.log("Watts" + ConsumptionValue);
-  } else if (Watts > 1000) {
+  //  console.log("Watts" + ConsumptionValue);
+  } 
+  else if (Watts > 1000) {
     ConsumptionValue =
       160 * 33 +
       140 * 72 +
@@ -149,7 +156,7 @@ function ConsumptionCalc(Watts) {
       150 * 158 +
       250 * 188 +
       (Watts - 1000) * 265;
-    console.log("Watts" + ConsumptionValue);
+  //  console.log("Watts" + ConsumptionValue);
   }
 }
 /*function CreateElements (){
@@ -211,9 +218,11 @@ function supoortedWattsCalc(Watts) {
   if (supported_unsupported == 1) {
     if (Watts >= 001 && Watts <= 300) {
       ConsumptionValueNew = Watts * 50;
-    } else if (Watts >= 301 && Watts <= 600) {
+    } 
+    else if (Watts >= 301 && Watts <= 600) {
       ConsumptionValueNew = 300 * 50 + (Watts - 300) * 100;
-    } else if (Watts > 600) {
+    } 
+    else if (Watts > 600) {
       ConsumptionValueNew = 300 * 50 + 300 * 100 + (Watts - 600) * 200;
     }
     if (Watts >= 51 && Watts <= 200) {
@@ -223,19 +232,25 @@ function supoortedWattsCalc(Watts) {
       ConsumptionValueNew = ConsumptionValueNew - 2000;
     }
     
-  } else if (supported_unsupported == 2) {
+  } 
+  else if (supported_unsupported == 2) {
     if (Watts >= 001 && Watts <= 1000) {
       ConsumptionValueNew = Watts * 120;
-    } else if (Watts >= 1001) {
+    }
+     else if (Watts >= 1001) {
       ConsumptionValueNew = 1000 * 120 + (Watts - 1000) * 150;
     }
+  }
+  else{
+        $("#supportWarning").show();
+        $("#warnings").show();
   }
 }
 function Warnings() {
   if (prevReadNew.length == 0) {
     //     $("#input-cal").append("<div id='prevWarning'><h2>يرجى ادخال قراءة سابقة *</h2></div>");
     $("#prevWarning").show();
-    $("#warnnings").show();
+    $("#warnings").show();
   } 
   else {
 
@@ -244,18 +259,18 @@ function Warnings() {
   if (nowReadNew.length == 0) {
     //   $("#input-cal").append("<div id='nowReadWarning'><h2>يرجى ادخال قراءة حالية</h2></div>");
     $("#nowReadWarning").show();
-    $("#warnnings").show();
-    console.log(nowReadNew.length + " nowReadNew.length");
+    $("#warnings").show();
+//    console.log(nowReadNew.length + " nowReadNew.length");
   } 
   else {
     $("#nowReadWarning").hide();
-    console.log(nowReadNew.length + " nowReadNew.length");
+  //  console.log(nowReadNew.length + " nowReadNew.length");
   }
   if (supported_unsupported != 1 && supported_unsupported != 2) {
     // $("#input-cal").append("<div id='supportWarning'><h2>يرجى تحديد دعم العداد</h2></div>");
     $("#supportWarning").show();
-    $("#warnnings").show();
-    console.log(supported_unsupported + " supported_unsupported");
+    $("#warnings").show();
+ //   console.log(supported_unsupported + " supported_unsupported");
   }
    else {
     $("#supportWarning").hide();
@@ -263,8 +278,8 @@ function Warnings() {
   if (serviceNew != 1 && serviceNew != 2) {
     //  $("#input-cal").append("<div id='serviceWarning><h2>يرجى تحديد نوع العداد</h2></div>");
     $("#serviceWarning").show();
-    $("#warnnings").show();
-    console.log(serviceNew + " serviceNew");
+    $("#warnings").show();
+ //   console.log(serviceNew + " serviceNew");
   } 
   else {
     $("#serviceWarning").hide();
@@ -284,18 +299,18 @@ function WarningsOld() {
     //   $("#input-cal").append("<div id='nowReadWarning'><h2>يرجى ادخال قراءة حالية</h2></div>");
     $("#nowReadWarningOld").show();
     $("#warningsOld").show();
-    console.log(nowRead.length + " nowReadNew.length");
+  //  console.log(nowRead.length + " nowReadNew.length");
   } 
   else {
     $("#nowReadWarningOld").hide();
-    console.log(nowRead.length + " nowReadNew.length");
+ //   console.log(nowRead.length + " nowReadNew.length");
   }
  
   if (service != 1 && service != 2) {
     //  $("#input-cal").append("<div id='serviceWarning><h2>يرجى تحديد نوع العداد</h2></div>");
     $("#serviceWarningOld").show();
     $("#warningsOld").show();
-    console.log(service + " serviceNew");
+  //  console.log(service + " serviceNew");
   } 
   else {
     $("#serviceWarningOld").hide();
